@@ -39,12 +39,11 @@ set nocp
 
 "set encoding=utf-8
 ""set encoding=gb2312
-set langmenu=zh_CN.gb2312
-language message zh_CN.gb2312
+set langmenu=en_US.UTF-8
 
-set fileencoding=gbk2312
-set ts=4
-set sw=4
+set fileencoding=utf-8
+set ts=2
+set sw=2
 set smartindent
 set showmatch        " Show matching brackets.
 set guioptions-=T
@@ -58,7 +57,7 @@ set wildmenu
 set noswapfile
 
 " 禁止光标闪烁
-" set gcr=a:block-blinkon0
+"set gcr=a:block-blinkon0
 
 " ack搜索时不打开第一个搜索文件
 map <Leader>fw :Ack! <Space>
@@ -239,36 +238,7 @@ autocmd filetype dot nnoremap <F1> :w <bar> exec '!dot -Tsvg sqlparse.dot > sqlp
 autocmd Filetype java nnoremap <F1> :w <bar> exec '!javac '.shellescape('%'). ' -d ./bin'<CR>
 autocmd filetype java nnoremap <F2> :w <bar> exec '!java -cp ./bin '.shellescape('%:r')<CR>
 
-
 let g:tlist_markdown_settings = 'markdown;h:Headlins'
-"新建.c,.h,.sh,.Java文件，自动插入文件头
-autocmd BufNewFile *.cpp,*.[ch],*.sh,*.Java,*.go exec ":call SetTitle()"
-"""定义函数SetTitle，自动插入文件头
-func SetTitle()
-    "如果文件类型为.sh文件
-    if &filetype == 'sh'
-        call setline(1,"\#########################################################################")
-        call append(line("."),   "\# File Name:    ".expand("%"))
-        call append(line(".")+1, "\# Author:       程序员Carl")
-        call append(line(".")+2, "\# mail:         programmercarl@163.com")
-        call append(line(".")+3, "\# Created Time: ".strftime("%c"))
-        call append(line(".")+4, "\#########################################################################")
-        call append(line(".")+5, "\#!/bin/bash")
-        call append(line(".")+6, "")
-    else
-        call setline(1, "/* ************************************************************************")
-        call append(line("."),   "> File Name:     ".expand("%"))
-        call append(line(".")+1, "> Author:        程序员Carl")
-        call append(line(".")+2, "> 微信公众号:    代码随想录")
-        call append(line(".")+3, "> Created Time:  ".strftime("%c"))
-        call append(line(".")+4, "> Description:   ")
-        call append(line(".")+5, " ************************************************************************/")
-        call append(line(".")+6, "")
-    endif
-    "新建文件后，自动定位到文件末尾
-    autocmd BufNewFile * normal G
-endfunc
-
 
 " shortcut for markdown
 " 创建时间快捷键for markdown
