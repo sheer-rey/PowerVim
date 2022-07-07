@@ -29,12 +29,12 @@ if [ -d ~/.vim ]; then
 fi
 
 echo "\033[0;36mCopying .vimrc and .vim\033[0m"
-echo "\033[0;32mln -s ${PowerVim}/.vimrc .vimrc\033[0m"
-ln -s ${PowerVim}/.vimrc .vimrc
-echo "\033[0;32mln -s ${PowerVim}/.vim .vim\033[0m"
-ln -s ${PowerVim}/.vim .vim
-echo "\033[0;32mln -s ${PowerVim}/.ctags .ctags\033[0m"
-ln -s ${PowerVim}/.ctags .ctags
+echo "\033[0;32mcp ${PowerVim}/.vimrc ~/.vimrc\033[0m"
+cp ${PowerVim}/.vimrc ~/.vimrc
+echo "\033[0;32mcp -r ${PowerVim}/.vim ~/.vim\033[0m"
+cp -r  ${PowerVim}/.vim ~/.vim
+echo "\033[0;32mcp ${PowerVim}/.ctags ~/.ctags\033[0m"
+cp ${PowerVim}/.ctags ~/.ctags
  # _____                    __      ___           
  # |  __ \                   \ \    / (_)          
  # | |__) |____      _____ _ _\ \  / / _ _ __ ___  
