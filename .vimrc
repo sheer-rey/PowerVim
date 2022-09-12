@@ -41,6 +41,8 @@ set nocp
 ""set encoding=gb2312
 set langmenu=en_US.UTF-8
 
+set tabstop=2 " set tab size as 2 spaces
+
 set fileencoding=utf-8
 set ts=2
 set sw=2
