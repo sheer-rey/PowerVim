@@ -1,5 +1,3 @@
-" Hello，我是PowerVim的作者，程序员Carl，欢迎关注我的微信公众号：代码随想录 
-"
 " 定义快捷键的前缀，即<Leader>
 let mapleader=";"
 
@@ -41,7 +39,7 @@ set nocp
 ""set encoding=gb2312
 set langmenu=en_US.UTF-8
 
-set tabstop=2 " set tab size as 2 spaces
+set tabstop=4 " set tab size as 4 spaces
 
 set fileencoding=utf-8
 set ts=2
