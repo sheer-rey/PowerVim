@@ -42,8 +42,8 @@ set langmenu=en_US.UTF-8
 set tabstop=4 " set tab size as 4 spaces
 
 set fileencoding=utf-8
-set ts=2
-set sw=2
+set ts=4
+set sw=4
 set smartindent
 set showmatch        " Show matching brackets.
 set guioptions-=T
