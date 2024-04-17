@@ -36,7 +36,7 @@ set incsearch		" do incremental searching
 set nocp
 
 "set encoding=utf-8
-""set encoding=gb2312
+"set encoding=gb2312
 set langmenu=en_US.UTF-8
 
 set tabstop=4 " set tab size as 4 spaces
@@ -86,7 +86,7 @@ nmap <Leader>d <C-D>
 map <Leader>1 ^
 map <Leader>2 $
 " 补全提示
-""nmap <Leader>p <C-P>
+nmap <Leader>p <C-P>
 " 快速切换C H源文件
 nmap <Leader>a :A<CR>
 
@@ -231,12 +231,13 @@ syntax on
 vnoremap <C-c> :w! ~/tmp/clipboard.txt <CR>
 inoremap <C-v> <Esc>:r ~/tmp/clipboard.txt <CR>
 " 编译快捷键
-autocmd filetype python nnoremap <F1> :w <bar> exec '!python '.shellescape('%')<CR> autocmd filetype c nnoremap <F1> :w <bar> exec '!gcc '.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r')<CR>
-autocmd filetype cpp nnoremap <F1> :w <bar> exec '!g++ --std=c++11 -pthread '.shellescape('%').' -o ./bin/'.shellescape('%:r').' && ./bin/'.shellescape('%:r')<CR>
-" autocmd filetype dot nnoremap <F1> :w <bar> exec '!dot -Tsvg '.shellescape('%').' > ./svg/'.shellescape('%:r').' && open ./bin/'.shellescape('%:r')<CR>
-autocmd filetype dot nnoremap <F1> :w <bar> exec '!dot -Tsvg sqlparse.dot > sqlparse.svg'<CR>
-autocmd Filetype java nnoremap <F1> :w <bar> exec '!javac '.shellescape('%'). ' -d ./bin'<CR>
-autocmd filetype java nnoremap <F2> :w <bar> exec '!java -cp ./bin '.shellescape('%:r')<CR>
+autocmd FileType python nnoremap <F1> :w <bar> exec '!python '.shellescape('%')<CR>
+autocmd FileType c nnoremap <F1> :w <bar> exec '!gcc '.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r')<CR>
+autocmd FileType cpp nnoremap <F1> :w <bar> exec '!g++ --std=c++11 -pthread '.shellescape('%').' -o ./bin/'.shellescape('%:r').' && ./bin/'.shellescape('%:r')<CR>
+" autocmd FileType dot nnoremap <F1> :w <bar> exec '!dot -Tsvg '.shellescape('%').' > ./svg/'.shellescape('%:r').' && open ./bin/'.shellescape('%:r')<CR>
+autocmd FileType dot nnoremap <F1> :w <bar> exec '!dot -Tsvg sqlparse.dot > sqlparse.svg'<CR>
+autocmd FileType java nnoremap <F1> :w <bar> exec '!javac '.shellescape('%'). ' -d ./bin'<CR>
+autocmd FileType java nnoremap <F2> :w <bar> exec '!java -cp ./bin '.shellescape('%:r')<CR>
 
 let g:tlist_markdown_settings = 'markdown;h:Headlins'
 
@@ -279,8 +280,6 @@ nmap cc :call SetCC() <CR>
 func SetCC() 
     call append(line("."), "// vim: et tw=100 ts=4 sw=4 cc=120")  
 endfunc
-
-" Hello，我是PowerVim的作者，程序员Carl，欢迎关注我的微信公众号：代码随想录 
 
 " 使用的背景主题
 colorscheme Monokai_Gavin
