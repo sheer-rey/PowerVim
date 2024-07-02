@@ -1,8 +1,13 @@
+👉 推荐 [Gitee同步](https://gitee.com/programmercarl/power-vim)
+
+> 版权申明： 本项目为我（[程序员Carl](https://github.com/youngyangyang04)）的原创。引用本项目文章请注明出处，例如：转自 https://github.com/youngyangyang04/PowerVim
+> 发现恶意抄袭或搬运，会动用法律武器维护自己的权益。让我们一起维护一个良好的技术创作环境！
+
 # [English Version](./docs/README-en.md)
 
 # PowerVim
 
-这套vim配置我已经打磨了将近四年，不断调整优化，已经可以完全满足工业级打开的需求了。所以我给它起名为PowerVim，一个真正强大的vim。
+这套vim配置我已经打磨了将近四年，不断调整优化，已经可以完全满足工业级开发的需求了。所以我给它起名为PowerVim，一个真正强大的vim。
 
 ```
   _____                    __      ___           
@@ -31,8 +36,16 @@ bash install.sh
 ```
 
 
-在按照的过程中 ubuntu 操作系统 会出现 这样的问题`Syntax error: "(" unexpected`，是系统语言问题，看本项目上方issue，已经给出解决办法
+在按照的过程中 ubuntu 操作系统 会出现 这样的问题`Syntax error: "(" unexpected`，是系统语言问题，看本项目上方[issue](https://github.com/youngyangyang04/PowerVim/issues)，已经给出解决办法
 
+
+如果报错 `Taglist: Exuberant ctags (http://ctags.sf.net) not found in PATH. Plugin is not loaded.` 则是没有安装Taglist插件 
+
+# 卸载 
+
+```bash
+sh uninstall.sh
+```
 
 # 特性
 
@@ -74,8 +87,10 @@ PowerVim的快捷键以;为开始
 ;tg             // 对当前目录打ctag 
 ;y              // 保存当前选中的目录到系统剪切板，前提是vim支持系统剪切板的寄存器
 ;gg             // 按顺序光标跳转各个窗口
+;t              // 在输入一个字符，则按照这个字符整体对齐
 
 // 一下快捷键是不用;的，直接在 非插入模式 下输入
+tb              // 插入表格
 e               // 快速删除光标所在的词 
 tabc            // 关闭当前tab，可以用:tabnew来打开一个新的tab Close tab, of course you should :tabnew a file first. 
 F1              // 编译并运行C++文件，自己写的C++例子的时候一键编译。前提手动在当前目录建一个bin文件夹，这是用来存放编译产生的执行文件 
