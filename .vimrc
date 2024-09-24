@@ -34,6 +34,7 @@ set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
 "设置非兼容模式
 set nocp
+set nowrap
 
 "set encoding=utf-8
 "set encoding=gb2312
