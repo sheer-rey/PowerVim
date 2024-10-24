@@ -1,45 +1,48 @@
 #!/bin/bash
 
-function digitaldatetime() {
-    echo `date +"%Y%m%d%H%M%S"`
-}
-PowerVim=`pwd -P`
-cd $HOME
+# get root directory of PowerVim project
+PowerVim=$(dirname $(realpath ${BASH_SOURCE[0]}))
 
-printf "\033[0;35mStart to install vim-conf\033[0m\n"
-printf "\033[0;36mLooking for an existing vim config...\033[0m\n"
-if [ -f ~/.vimrc ] || [ -h ~/.vimrc ]; then
-    printf "\033[0;33mFound ~/.vimrc.\033[0m \033[0;32mBacking up to ~/.vimrc.`digitaldatetime`\033[0m\n"
-    mv ~/.vimrc ~/.vimrc.`digitaldatetime`
+# get current time for backup suffix
+current_time=$(date +"%Y%m%d%H%M%S")
+
+# load predefined colors
+source ${PowerVim}/predefined_colors
+
+echo -e "${font_magenta}Start to install vim-conf${font_reset}"
+echo -e "${font_cyan}Looking for an existing vim config...${font_reset}"
+
+# check and backup previous .vimrc configuration
+if [ -f $HOME/.vimrc ]; then
+    echo -e "${font_yellow}Found $HOME/.vimrc file, ${font_green}backing up to $HOME/.vimrc.${current_time}${font_reset}"
+    mv $HOME/.vimrc $HOME/.vimrc.${current_time}
 fi
 
-if [ -f ~/.ctags ] || [ -h ~/.ctags ]; then
-    printf "\033[0;33mFound ~/.ctags.\033[0m \033[0;32mBacking up to ~/.ctags.`digitaldatetime`\033[0m\n"
-    mv ~/.ctags ~/.ctags.`digitaldatetime`
+# check and backup previous .ctags configuration
+if [ -f $HOME/.ctags ]; then
+    echo -e "${font_yellow}Found $HOME/.ctags file, ${font_green}backing up to $HOME/.ctags.${current_time}${font_reset}"
+    mv $HOME/.ctags $HOME/.ctags.${current_time}
 fi
 
-if [ -d ~/.vim ]; then
-    printf "\033[0;33mFound ~/.vim.\033[0m \033[0;32mBacking up to ~/.vim.`digitaldatetime`\033[0m\n"
-    mv ~/.vim ~/.vim.`digitaldatetime`
+# check and backup previous .vim/ configuration
+if [ -d $HOME/.vim ]; then
+    echo -e "${font_yellow}Found $HOME/.vim directory, ${font_green}backing up to $HOME/.vim.${current_time}${font_reset}"
+    mv $HOME/.vim $HOME/.vim.${current_time}
 fi
 
-printf "\033[0;36mCopying .vimrc and .vim\033[0m\n"
-printf "\033[0;32mcp ${PowerVim}/.vimrc ~/.vimrc\033[0m\n"
-cp ${PowerVim}/.vimrc ~/.vimrc
-printf "\033[0;32mcp -r ${PowerVim}/.vim ~/.vim\033[0m\n"
-cp -r  ${PowerVim}/.vim ~/.vim
-printf "\033[0;32mcp ${PowerVim}/.ctags ~/.ctags\033[0m\n"
-cp ${PowerVim}/.ctags ~/.ctags
- # _____                    __      ___           
- # |  __ \                   \ \    / (_)          
- # | |__) |____      _____ _ _\ \  / / _ _ __ ___  
- # |  ___/ _ \ \ /\ / / _ \ '__\ \/ / | | '_ ` _ \ 
- # | |  | (_) \ V  V /  __/ |   \  /  | | | | | | |
- # |_|   \___/ \_/\_/ \___|_|    \/   |_|_| |_| |_|)'')
-printf "\033[0;35m"'  _____                    __      ___             '"\033[0m\n"
-printf "\033[0;35m"'  |  __ \                   \ \    / (_)           '"\033[0m\n"
-printf "\033[0;35m"'  | |__) |____      _____ _ _\ \  / / _ _ __ ___   '"\033[0m\n"
-printf "\033[0;35m"'  |  ___/ _ \ \ /\ / / _ \ \__\ \/ / | |  _   _ \  '"\033[0m\n"
-printf "\033[0;35m"'  | |  | (_) \ V  V /  __/ /   \  /  | | | | | | | '"\033[0m\n"
-printf "\033[0;35m"'  |_|   \___/ \_/\_/ \___|_|    \/   |_|_| |_| |_| '"\033[0m\n"
-printf "\n\n \033[0;35mEnjoy!.\033[0m\n"
+# copy vim configuration file to HOME directory
+echo -e "${font_cyan}Copying vim configuration files...${font_reset}"
+cp -r ${PowerVim}/.vim $HOME/.vim
+cp ${PowerVim}/.vimrc $HOME/.vimrc
+cp ${PowerVim}/.ctags $HOME/.ctags
+
+# print message
+echo -e "${font_magenta}  _____                    __      ___             ${font_reset}"
+echo -e "${font_magenta}  |  __ \                   \ \    / (_)           ${font_reset}"
+echo -e "${font_magenta}  | |__) |____      _____ _ _\ \  / / _ _ __ ___   ${font_reset}"
+echo -e "${font_magenta}  |  ___/ _ \ \ /\ / / _ \ \__\ \/ / | |  _   _ \  ${font_reset}"
+echo -e "${font_magenta}  | |  | (_) \ V  V /  __/ /   \  /  | | | | | | | ${font_reset}"
+echo -e "${font_magenta}  |_|   \___/ \_/\_/ \___|_|    \/   |_|_| |_| |_| ${font_reset}"
+
+echo -e "\n${font_magenta}Enjoy!${font_reset}"
+
